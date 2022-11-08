@@ -1,4 +1,5 @@
 public class Main {
+
     private static Employee[] employees = new Employee[10];
     public static void printEmployees() {
         for (Employee employee : employees) {
@@ -8,7 +9,7 @@ public class Main {
     public static int calculateTotalSalary() {
         int sum = 0;
         for (Employee employee : employees) {
-            sum += employee.getSalary();
+            if (employee != null) sum += employee.getSalary();
         }
         return sum;
     }
@@ -16,7 +17,7 @@ public class Main {
         Employee result = employees[0];
         double minSalary = employees[0].getSalary();
         for (Employee employee : employees) {
-            if (employee.getSalary() < minSalary) {
+            if (employee != null && employee.getSalary() < minSalary) {
                 minSalary = employee.getSalary();
                 result = employee;
             }
@@ -27,14 +28,13 @@ public class Main {
         Employee result = employees[0];
         double maxSalary = employees[0].getSalary();
         for (Employee employee : employees) {
-            if (employee.getSalary() > maxSalary) {
+            if (employee != null && employee.getSalary() > maxSalary) {
                 maxSalary = employee.getSalary();
                 result = employee;
             }
         }
         return result;
     }
-
     public static float calculateAverageSalary() {
         return calculateTotalSalary() / Employee.getCounter();
     }
